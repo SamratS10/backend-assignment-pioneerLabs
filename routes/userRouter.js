@@ -61,7 +61,7 @@ const userRouter = express.Router()
  * /api/user/login:
  *   post:
  *     summary: "User login"
- *     description: "Logs in a user with the provided credentials."
+ *     description: "Logs in a user with the provided credentials. A JSON Web Token (JWT) is generated upon successful login and stored in a cookie named 'token' for authentication."
  *     tags:
  *       - User
  *     requestBody:
@@ -69,16 +69,32 @@ const userRouter = express.Router()
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: "User email address."
+ *               password:
+ *                 type: string
+ *                 minLength: 6
+ *                 description: "User password."
  *     responses:
  *       '200':
  *         description: "User successfully logged in."
  *       '400':
  *         description: "Bad request - registration details are invalid."
  *       '401':
- *         description: "User already exist please login"
+ *         description: "Unauthorized - invalid credentials."
  *       '500':
  *         description: "Internal Server Error"
+ *     security:
+ *       - cookieAuth: []
+ * securitySchemes:
+ *   cookieAuth:
+ *     type: apiKey
+ *     in: cookie
+ *     name: "jwtoken"
  */
 
 /**

@@ -43,6 +43,6 @@ app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocs))
 app.use("/api/user",userRouter)
 app.use("/api/data",apiDataRouter)
 app.use("/api/v1",userDetailRouter)
-app.use("/api/v1/",registeredDataRouter)
+app.use("/api/v1",registeredDataRouter)
 
 fetchDataAndInsert()
