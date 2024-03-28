@@ -3,11 +3,11 @@ import cors from "cors"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import connectMongoDb from "./connectDb/dbConnection.js"
-import userRouter from "./router/userRouter.js"
+import userRouter from "./routes/userRouter.js"
 import fetchDataAndInsert from "./controller/fetchApiData.js"
-import apiDataRouter from "./router/apiDataRouter.js"
-import userDetailRouter from "./router/userDetailsRouter.js"
-import registeredDataRouter from "./router/registeredDataRouter.js"
+import apiDataRouter from "./routes/apiDataRouter.js"
+import userDetailRouter from "./routes/userDetailsRouter.js"
+import registeredDataRouter from "./routes/registeredDataRouter.js"
 dotenv.config()
 const app = express()
 app.use(express.json())
